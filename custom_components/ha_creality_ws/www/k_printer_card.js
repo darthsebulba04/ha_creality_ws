@@ -416,8 +416,10 @@ class KPrinterCard extends HTMLElement {
       const id = btn.id;
 
       if (id === "power") {
-        const eid = this._resolveEntityId(this._cfg.power, ["switch"]);
-        this._toggleEntity(eid);
+        if (confirm("Are you sure you want to toggle the power button?")) {
+          const eid = this._resolveEntityId(this._cfg.power, ["switch"]);
+          this._toggleEntity(eid);
+        }
       } else if (id === "light") {
         const eid = this._resolveEntityId(this._cfg.light, ["light", "switch"]);
         this._toggleEntity(eid);
@@ -1530,3 +1532,4 @@ try {
     preview: true,
   });
 } catch (_) { }
+
